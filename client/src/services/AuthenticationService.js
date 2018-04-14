@@ -4,6 +4,9 @@ export default {
   // register函数接收post请求的credentials(证书)参数
   register (credentials) {
     return Api().post('register', credentials)
+  },
+  login (credentials) {
+    return Api().post('login', credentials)
   }
 }
 

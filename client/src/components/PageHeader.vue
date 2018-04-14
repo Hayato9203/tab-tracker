@@ -20,7 +20,7 @@
             </v-btn>
         </v-toolbar-items>
         <v-toolbar-items>
-            <v-btn flat dark @click="navigateTo({name: 'login'})">
+            <v-btn flat dark router to="login">
                 Log In
             </v-btn>
         </v-toolbar-items>
