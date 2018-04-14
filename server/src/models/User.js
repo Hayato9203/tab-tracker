@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     hooks: {
+      // beforeSave: hashPassword,
       beforeCreate: hashPassword,
       beforeUpdate: hashPassword
     }
@@ -49,6 +50,6 @@ module.exports = (sequelize, DataTypes) => {
   1.compare方式有问题，参照文档和stackflow无果
   2.bcrypt.hash，无果
   3.sequelize.define, 排查schema,type?无果
-  4.hooks，查找文档，查看解释，去掉beforeSave解决问题
+  4.hooks，查找文档，查看解释，查看github issue，去掉beforeSave或者<beforeUpdate，beforeCreate>解决问题,或者后者两个功能相加等于前者,前后公用会冲突
 `
 */
