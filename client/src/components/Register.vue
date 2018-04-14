@@ -3,7 +3,7 @@
     <!-- 将12格分成6+6，内容总占6，左右分别缩进3格 -->
     <v-flex xs6 offset-xs3>
       <v-card class="white elevation-2">
-        <v-toolbar flat dense class="cyan">
+        <v-toolbar dark flat dense class="cyan">
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
         <v-card class="pl-4 pr-4 pt-3 pb-3">
@@ -11,7 +11,7 @@
           <br />
           <v-text-field label="Password" v-model="password"></v-text-field>
           <br />
-          <v-btn class="cyan" @click="register">Register</v-btn>
+          <v-btn dark class="cyan" @click="register">Register</v-btn>
         </v-card>
       </v-card>
     </v-flex>

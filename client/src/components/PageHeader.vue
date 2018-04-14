@@ -1,13 +1,34 @@
 <template>
-    <v-toolbar fixed class="cyan">
+    <v-toolbar fixed class="cyan" dark>
         <v-toolbar-title class="mr-4">
             TabTracker
         </v-toolbar-title>
+
+        <!-- TODO: Implement Me -->
+        <!-- <v-toolbar-items>
+            <v-btn flat dark>
+                Browse
+            </v-btn>
+        </v-toolbar-items> -->
+
+        <v-spacer></v-spacer>
+
+        <v-toolbar-items>
+            <v-btn flat dark @click="navigateTo({name: 'register'})">
+                Sign Up
+            </v-btn>
+        </v-toolbar-items>
     </v-toolbar>
 </template>
 
 <script>
-export default { }
+export default {
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
+  }
+}
 </script>
 
 <style scoped>
