@@ -5,7 +5,7 @@ const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
 
 function hashPassword (user, options) {
   const SALT_FACTOR = 8
-  // 如果密码没改变的话，就不用加密了
+  // 如果密码没改变的话，就不用加密
   if (!user.changed('password')) {
     return
   }
