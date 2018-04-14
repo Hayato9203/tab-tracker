@@ -1,0 +1,24 @@
+Vue2
+Express
+jwt - client和server间传递client认证的信息http://t.cn/RmOXvL7
+bcrypt-nodejs - 加密
+sequelize - (ORM)虚拟对象数据库(支持多种数据库)
+vue-router
+http - status
+eslint
+vuetify - framework框架
+axios - HTTP库, 对请求和相应进行处理
+
+
+
+/*
+`遇到的问题：
+	bcrypt.compareAsync不起作用一直返回false, 猜想
+	  1.compare方式有问题，参照文档和stackflow无果
+	  2.bcrypt.hash，无果
+	  3.sequelize.define, 排查schema,type?无果
+	  4.hooks，查找文档，查看解释，去掉beforeSave解决问题
+`
+*/
+
+

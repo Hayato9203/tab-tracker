@@ -24,14 +24,17 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       unique: true,
+      allowNull: false,
       trim: true
     },
-    password: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     hooks: {
       beforeCreate: hashPassword,
-      beforeUpdate: hashPassword,
-      beforeSave: hashPassword
+      beforeUpdate: hashPassword
     }
   })
 
@@ -45,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
 `遇到的问题：bcrypt.compareAsync不起作用一直返回false, 猜想
   1.compare方式有问题，参照文档和stackflow无果
   2.bcrypt.hash，无果
-  3.sequelize.define
-  4.hooks
+  3.sequelize.define, 排查schema,type?无果
+  4.hooks，查找文档，查看解释，去掉beforeSave解决问题
 `
 */
