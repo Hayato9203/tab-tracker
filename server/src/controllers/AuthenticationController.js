@@ -4,7 +4,9 @@ module.exports = {
   async register (req, res) {
     try {
       const user = await User.create(req.body)
-      res.send(user.toJson())
+      // console.log(user)
+      // console.log(user.dataValues)
+      res.send(user.dataValues)
     } catch (err) {
       res.status(400).send({
         error: `This email account is already is use.`
@@ -31,9 +33,10 @@ module.exports = {
           error: `The login information was incorrect`
         })
       }
-
+      // console.log(user)
+      // console.log(user.dataValues)
       res.send({
-        user: user.toJson()
+        user: user.dataValues
       })
     } catch (err) {
       // 返回500状态码告诉用户非他们的原因
