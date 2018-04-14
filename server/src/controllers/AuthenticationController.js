@@ -1,4 +1,13 @@
 const {User} = require('../models')
+const jwt = require('jsonwebtoken')
+const config = require('../config/config')
+
+function jwtSignUser (user) {
+  const ONE_WEEK = 60 * 60 * 24 * 7
+  return jwt.sign(user, config.authentication.jwtSecret, {
+    expiresIn: ONE_WEEK
+  })
+}
 
 module.exports = {
   async register (req, res) {
@@ -35,8 +44,10 @@ module.exports = {
       }
       // console.log(user)
       // console.log(user.dataValues)
+      const userJson = user.dataValues
       res.send({
-        user: user.dataValues
+        user: userJson,
+        token: jwtSignUser(userJson)
       })
     } catch (err) {
       // 返回500状态码告诉用户非他们的原因
