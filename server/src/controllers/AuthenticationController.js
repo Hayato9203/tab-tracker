@@ -36,12 +36,13 @@ module.exports = {
         })
       }
       // 将用户的password与数据库的password对比返回
-      const isPasswordValid = password === user.password
+      const isPasswordValid = await user.comparePassword(password)
       if (!isPasswordValid) {
         return res.status(403).send({
           error: `The login information was incorrect`
         })
       }
+
       // console.log(user)
       // console.log(user.dataValues)
       const userJson = user.dataValues
