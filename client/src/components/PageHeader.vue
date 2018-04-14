@@ -1,7 +1,9 @@
 <template>
-    <v-toolbar fixed class="cyan" dark>
+    <v-toolbar fixed class="teal accent-2" dark>
         <v-toolbar-title class="mr-4">
-            TabTracker
+            <span class="home" @click="navigateTo({name: 'root'})">
+                TabTracker
+            </span>
         </v-toolbar-title>
 
         <!-- TODO: Implement Me -->
@@ -12,10 +14,14 @@
         </v-toolbar-items> -->
 
         <v-spacer></v-spacer>
-
         <v-toolbar-items>
             <v-btn flat dark @click="navigateTo({name: 'register'})">
                 Sign Up
+            </v-btn>
+        </v-toolbar-items>
+        <v-toolbar-items>
+            <v-btn flat dark @click="navigateTo({name: 'login'})">
+                Log In
             </v-btn>
         </v-toolbar-items>
     </v-toolbar>
@@ -32,5 +38,10 @@ export default {
 </script>
 
 <style scoped>
-
+.home {
+    cursor: pointer;
+}
+.home:hover {
+    color: rgb(255, 255, 255);
+}
 </style>
