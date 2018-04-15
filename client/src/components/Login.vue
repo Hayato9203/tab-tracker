@@ -1,5 +1,5 @@
 <template>
-    <v-layout row wrap>
+  <v-layout row wrap>
     <v-flex xs6 offset-xs3>
       <v-card class="white elevation-2">
         <v-toolbar dark flat dense class="cyan">

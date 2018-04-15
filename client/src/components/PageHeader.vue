@@ -13,6 +13,12 @@
             </v-btn>
         </v-toolbar-items> -->
 
+        <v-toolbar-items>
+            <v-btn flat dark @click="navigateTo({name: 'songs'})">
+                Browse
+            </v-btn>
+        </v-toolbar-items>
+
         <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn v-if="!$store.state.isUserLoggedIn" flat dark @click="navigateTo({name: 'register'})">
