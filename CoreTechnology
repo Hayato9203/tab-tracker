@@ -8,6 +8,8 @@ http - status
 eslint
 vuetify - framework框架
 axios - HTTP库, 对请求和相应进行处理
+vuex - 状态管理模式(store.js中用到),它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
+vuex-router-sync - 当在你的vuex的方法中使用route对象时你可能需要它(main.js中用到)(vuex的领域这个$route将不起作用)
 
 
 
