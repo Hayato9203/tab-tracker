@@ -8,8 +8,10 @@
         <v-card class="pl-4 pr-4 pt-3 pb-3">
           <v-text-field label="Email" v-model="email"></v-text-field>
           <br />
-          <v-text-field label="Password" v-model="password"></v-text-field>
+          <v-text-field label="Password" type="password" v-model="password"></v-text-field>
           <br />
+          <div class="error" v-html="error"></div>
+          <br>
           <v-btn dark class="cyan" @click="login">Login</v-btn>
         </v-card>
       </v-card>

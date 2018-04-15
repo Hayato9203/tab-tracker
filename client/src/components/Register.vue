@@ -7,10 +7,14 @@
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
         <v-card class="pl-4 pr-4 pt-3 pb-3">
-          <v-text-field label="Email" v-model="email"></v-text-field>
+          <form action="" method="post" name="tab-tracker-form" autocomplete="off">
+            <v-text-field label="Email" v-model="email"></v-text-field>
+            <br />
+            <v-text-field label="Password" autocomplete="new-password" v-model="password"></v-text-field>
+          </form>
           <br />
-          <v-text-field label="Password" v-model="password"></v-text-field>
-          <br />
+          <div class="error" v-html="error"></div>
+          <br>
           <v-btn dark class="cyan" @click="register">Register</v-btn>
         </v-card>
       </v-card>
