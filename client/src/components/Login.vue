@@ -2,18 +2,17 @@
   <v-layout row wrap>
     <v-flex xs6 offset-xs3>
       <v-card class="white elevation-2">
-        <v-toolbar dark flat dense class="cyan">
-          <v-toolbar-title>Login</v-toolbar-title>
-        </v-toolbar>
-        <v-card class="pl-4 pr-4 pt-3 pb-3">
-          <v-text-field label="Email" v-model="email"></v-text-field>
-          <br />
-          <v-text-field label="Password" type="password" v-model="password"></v-text-field>
-          <br />
-          <div class="error" v-html="error"></div>
-          <br>
-          <v-btn dark class="cyan" @click="login">Login</v-btn>
-        </v-card>
+        <panel title="Login">
+          <v-card class="pl-4 pr-4 pt-3 pb-3">
+            <v-text-field label="Email" v-model="email"></v-text-field>
+            <br />
+            <v-text-field label="Password" type="password" v-model="password"></v-text-field>
+            <br />
+            <div class="error" v-html="error"></div>
+            <br>
+            <v-btn dark class="cyan" @click="login">Login</v-btn>
+          </v-card>
+        </panel>
       </v-card>
     </v-flex>
   </v-layout>
@@ -21,6 +20,8 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
+
 export default {
   data () {
     return {
@@ -43,6 +44,9 @@ export default {
         this.error = error.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>
