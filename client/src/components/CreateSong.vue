@@ -1,5 +1,6 @@
 <template>
-    <v-flex xs6 offset-xs3>
+<v-layout>
+    <v-flex xs4>
         <v-card class="white elevation-2">
             <panel title="Song Metadata">
                 <v-card class="pl-4 pr-4 pt-3 pb-3">
@@ -23,12 +24,22 @@
                 <v-card class="pl-4 pr-4 pt-3 pb-3">
                     <v-text-field label="Lyrics" v-model="lyrics"></v-text-field>
                 </v-card>
+            </panel>
+        </v-card>
+    </v-flex>
+    <v-flex xs8 class="ml-2">
+        <v-card class="white elevation-2">
+            <panel title="Song Structure">
                 <v-card class="pl-4 pr-4 pt-3 pb-3">
-                    <v-text-field label="Tab" v-model="tab"></v-text-field>
+                    <v-text-field label="Tab" multi-line v-model="tab"></v-text-field>
+                </v-card>
+                <v-card class="pl-4 pr-4 pt-3 pb-3">
+                    <v-text-field label="Lyrics" multi-line v-model="lyrics"></v-text-field>
                 </v-card>
             </panel>
         </v-card>
     </v-flex>
+</v-layout>
 </template>
 
 <script>
