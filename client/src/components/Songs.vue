@@ -2,7 +2,7 @@
   <v-layout row wrap>
     <v-flex xs6 offset-xs3>
         <panel title="Songs">
-            <div v-for="song in songs" :key="song.title">
+            <div v-for="song in songs" :key="song.id">
                 {{song.title}} -
                 {{song.album}} -
                 {{song.artist}}
@@ -31,7 +31,7 @@ export default {
   },
   async mounted () {
     // 从后台取得所有歌曲
-    this.songs = await SongsService.index()
+    this.songs = (await SongsService.index()).data
   },
   components: {
     Panel

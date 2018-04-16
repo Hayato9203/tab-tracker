@@ -3,7 +3,7 @@ const {Song} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
-      const songs = Song.findAll({
+      const songs = await Song.findAll({
         limit: 10
       })
       res.send(songs)
@@ -15,7 +15,7 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const song = Song.create(req.body)
+      const song = await Song.create(req.body)
       res.send(song)
     } catch (err) {
       res.status(500).send({

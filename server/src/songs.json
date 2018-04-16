@@ -1,0 +1,62 @@
+{
+    "うたかた花火": {
+        "title": "うたかた花火",
+        "artist": "supercell",
+        "genre": "J-pop",
+        "album": "Today Is a Beautiful Day",
+        "albumImageUrl": "http://st.cdjapan.co.jp/pictures/l/06/30/SRCL-7488.jpg?v=1",
+        "youtubeId": "fxeep82h5Mg",
+        "lyrics": "",
+        "tab": "http://www.ufret.jp/song.php?data=6342"
+    },
+    "ビードロ模様": {
+        "title": "ビードロ模様",
+        "artist": "やなぎなぎ",
+        "genre": "Anime",
+        "album": "Euaru",
+        "albumImageUrl": "https://cdn3.comtrya.com/wp-content/uploads/2013/06/nagi-yanagi-euaru-limited-bd_thumb.jpg",
+        "youtubeId": "Gq3ZwqVKtlQ",
+        "lyrics": "",
+        "tab": "www.ufret.jp/song.php?data=21433"
+    },
+    "夏の終わりの雨音が": {
+        "title": "夏の終わりの雨音が",
+        "artist": "伊波杏樹;諏訪ななか",
+        "genre": "Anime",
+        "album": "デュオトリオコレクション VOL.1 〜SUMMER VACATION〜",
+        "albumImageUrl": "https://images-fe.ssl-images-amazon.com/images/I/61i%2B41elN0L._SS500.jpg",
+        "youtubeId": "AOhRFlMUBBU",
+        "lyrics": "",
+        "tab": "www.ufret.jp/song.php?data=13770"
+    },
+    "夜空はなんでも知ってるの？": {
+        "title": "夜空はなんでも知ってるの？",
+        "artist": "CYaRon",
+        "genre": "Anime",
+        "album": "元気全開DAY！DAY！DAY！",
+        "albumImageUrl": "https://images-na.ssl-images-amazon.com/images/I/61h0MdxdT4L.jpg",
+        "youtubeId": "t-YMy0f-KXM",
+        "lyrics": "",
+        "tab": "https://ja.chordwiki.org/wiki/%E5%A4%9C%E7%A9%BA%E3%81%AF%E3%81%AA%E3%82%93%E3%81%A7%E3%82%82%E7%9F%A5%E3%81%A3%E3%81%A6%E3%82%8B%E3%81%AE%EF%BC%9F"
+    },
+    "アクアテラリウム": {
+        "title": "アクアテラリウム",
+        "artist": "やなぎなぎ",
+        "genre": "Anime",
+        "album": "凪のあすから",
+        "albumImageUrl": "https://images-na.ssl-images-amazon.com/images/I/41W8fBka10L.jpg",
+        "youtubeId": "hqIzwdnP-9M",
+        "lyrics": "",
+        "tab": "www.ufret.jp/song.php?data=6600"
+    },
+    "Letter Song": {
+        "title": "Letter Song",
+        "artist": "ヲタみん",
+        "genre": "J-pop",
+        "album": "シングル",
+        "albumImageUrl": "https://i.ytimg.com/vi/3vjHoZ3s4Eg/maxresdefault.jpg",
+        "youtubeId": "EnHC00hUPtA",
+        "lyrics": "",
+        "tab": "https://ja.chordwiki.org/wiki/letter+song"
+    }
+}
