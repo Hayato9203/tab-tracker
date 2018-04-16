@@ -21,7 +21,7 @@ require('./routes')(app)
 
 // force: true服务重启,数据库将被覆盖
 sequelize.sync({
-  force: false
+  force: true
 }).then(() => {
   app.listen(config.port)
   console.log(`Server started on port ${config.port}`)
