@@ -4,7 +4,7 @@
         <v-card class="white elevation-2">
             <panel title="Song Metadata">
                 <v-card class="pl-4 pr-4 pt-3 pb-3">
-                    <v-text-field label="Title" v-model="song.title"></v-text-field>
+                    <v-text-field label="Title" v-model="song.title" required :rules="[required]"></v-text-field>
                 </v-card>
                 <v-card class="pl-4 pr-4 pt-3 pb-3">
                     <v-text-field label="Artist" v-model="song.artist"></v-text-field>
@@ -55,7 +55,8 @@ export default {
         youtubeId: null,
         lyrics: null,
         tab: null
-      }
+      },
+      required: (value) => !!value || 'Required.'
     }
   },
   components: {
