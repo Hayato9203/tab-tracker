@@ -5,6 +5,7 @@ export default {
     return Api().get('songs')
   },
   post (song) {
-    return Api().get('songs', song)
+    console.log(song)
+    return Api().post('songs', song)
   }
 }
