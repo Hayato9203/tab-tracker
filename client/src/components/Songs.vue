@@ -7,10 +7,17 @@
               <v-icon>add</v-icon>
             </v-btn>
           </router-link>
-          <div v-for="song in songs" :key="song.id">
-            {{song.title}} -
-            {{song.album}} -
-            {{song.artist}}
+          <div v-for="song in songs" :key="song.id" class="song">
+            <v-layout>
+              <v-flex xs6 >
+                <div class="song-title">{{song.title}}</div>
+                <div class="song-artist">{{song.artist}}</div>
+                <div class="song-genre">{{song.genre}}</div>
+              </v-flex>
+              <v-flex xs6 >
+                <img :src="song.albumImageUrl" class="album-image">
+              </v-flex>
+            </v-layout>
           </div>
         </panel>
     </v-flex>
@@ -25,12 +32,12 @@ export default {
   data () {
     return {
       songs: [
-        {title: 'うたかた花火', album: '星が瞬くこんな夜に', artist: 'supercell'},
-        {title: 'ビードロ模様', album: 'ビードロ模様', artist: 'やなぎなぎ'},
-        {title: '夏の終わりの雨音が', album: 'デュオトリオコレクション VOL.1 ~SUMMER VACATION~', artist: '伊波杏樹;諏訪ななか'},
-        {title: '夜空はなんでも知ってるの？', album: '元気全開DAY！DAY！DAY！', artist: 'CYaRon'},
-        {title: 'アクアテラリウム', album: 'アクアテラリウム', artist: 'やなぎなぎ'},
-        {title: 'Letter Song', album: 'Letter Song', artist: 'ヲタみん'}
+        {title: 'うたかた花火', album: '星が瞬くこんな夜に', artist: 'supercell', albumImageUrl: ''},
+        {title: 'ビードロ模様', album: 'ビードロ模様', artist: 'やなぎなぎ', albumImageUrl: ''},
+        {title: '夏の終わりの雨音が', album: 'デュオトリオコレクション VOL.1 ~SUMMER VACATION~', artist: '伊波杏樹;諏訪ななか', albumImageUrl: ''},
+        {title: '夜空はなんでも知ってるの？', album: '元気全開DAY！DAY！DAY！', artist: 'CYaRon', albumImageUrl: ''},
+        {title: 'アクアテラリウム', album: 'アクアテラリウム', artist: 'やなぎなぎ', albumImageUrl: ''},
+        {title: 'Letter Song', album: 'Letter Song', artist: 'ヲタみん', albumImageUrl: ''}
       ]
     }
   },
@@ -45,5 +52,22 @@ export default {
 </script>
 
 <style scoped>
-
+.song{
+  padding: 20px;
+  height: 330px;
+  overflow: hidden;
+}
+.song-title{
+  font-size: 30px;
+}
+.song-artist{
+  font-size: 24px;
+}
+.song-genre{
+  font-size: 18px;
+}
+.album-image{
+  width: 70%;
+  margin: 0 auto;
+}
 </style>

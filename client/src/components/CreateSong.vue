@@ -35,7 +35,7 @@
                 </v-card>
             </panel>
         </v-card>
-        <div class="error" v-if="error">{{error}}</div>
+        <div class="danger-alert" v-if="error">{{error}}</div>
         <v-btn dark class="cyan" @click="create">Create the Song</v-btn>
     </v-flex>
 </v-layout>
@@ -89,5 +89,7 @@ export default {
 </script>
 
 <style scoped>
-
+.danger-alert{
+    color: red;
+}
 </style>
