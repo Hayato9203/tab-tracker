@@ -13,6 +13,15 @@
                 <div class="song-title">{{song.title}}</div>
                 <div class="song-artist">{{song.artist}}</div>
                 <div class="song-genre">{{song.genre}}</div>
+                <!-- 定义v-on:click中带有参数的route -->
+                <v-btn
+                  dark class="cyan"
+                  @click="navigateTo({
+                    name: 'song',
+                    params: {songId: song.id}
+                  })">
+                  View this song
+                </v-btn>
               </v-flex>
               <v-flex xs6 >
                 <img :src="song.albumImageUrl" class="album-image">
@@ -44,6 +53,11 @@ export default {
   async mounted () {
     // 从后台取得所有歌曲
     this.songs = (await SongsService.index()).data
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
   },
   components: {
     Panel
