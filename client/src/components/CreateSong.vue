@@ -35,7 +35,9 @@
                 </v-card>
             </panel>
         </v-card>
-        <div class="danger-alert" v-if="error">{{error}}</div>
+        <v-alert outline color="error" v-if="error" icon="warning" :value="true">
+            {{error}}
+        </v-alert>
         <v-btn dark class="cyan" @click="create">Create the Song</v-btn>
     </v-flex>
 </v-layout>
