@@ -5,7 +5,9 @@ export default {
     return Api().get('songs')
   },
   post (song) {
-    console.log(song)
     return Api().post('songs', song)
+  },
+  show (songId) {
+    return Api().get(`songs/${songId}`)
   }
 }
