@@ -1,4 +1,6 @@
 <template>
+<div>
+  <!-- 歌曲信息页 -->
   <v-layout>
     <v-flex xs6>
       <panel title="Song Metadata">
@@ -7,25 +9,30 @@
             <div class="song-title">{{song.title}}</div>
             <div class="song-artist">{{song.artist}}</div>
             <div class="song-genre">{{song.genre}}</div>
-            <!-- 定义v-on:click中带有参数的route -->
-            <v-btn
-              dark class="cyan"
-              @click="navigateTo({
-                name: 'song',
-                params: {songId: song.id}
-              })">
-              View this song
-            </v-btn>
           </v-flex>
           <v-flex xs6>
             <img :src="song.albumImageUrl" class="album-image">
+            <br>
+            {{song.album}}
           </v-flex>
         </v-layout>
       </panel>
     </v-flex>
+  </v-layout>
+  <!-- 歌词歌谱页 -->
+  <v-layout>
     <v-flex xs6>
+      <panel title="Song Metadata">
+        <!-- youtube embeded -->
+      </panel>
+    </v-flex>
+    <v-flex xs6 class="ml-2">
+      <panel title="Lyrics">
+        <textarea readonly class="lyrics" v-model="song.lyrics"></textarea>
+      </panel>
     </v-flex>
   </v-layout>
+</div>
 </template>
 
 <script>
@@ -69,5 +76,22 @@ export default {
 .album-image{
   width: 70%;
   margin: 0 auto;
+}
+textarea{
+  width: 100%;
+  font-family: monospace;
+  border: none;
+  height: 600px;
+  border-style: none;
+  border-color: transparent;
+  overflow: auto;
+  padding: 40px;
+}
+@font-face {
+font-family: Sazanami;
+src: url(../../static/fonts/sazanami-gothic.ttf);
+}
+textarea.lyrics{
+  font-family: Sazanami;
 }
 </style>
