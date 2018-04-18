@@ -1,16 +1,24 @@
 <template>
 <panel title="Song Metadata">
     <v-layout class="song">
-        <v-flex xs6>
+      <v-flex xs6>
         <div class="song-title">{{song.title}}</div>
         <div class="song-artist">{{song.artist}}</div>
         <div class="song-genre">{{song.genre}}</div>
-        </v-flex>
-        <v-flex xs6>
-        <img :src="song.albumImageUrl" class="album-image">
-        <br>
-        {{song.album}}
-        </v-flex>
+        <v-btn
+          dark class="cyan"
+          @click="navigateTo({
+            name: 'song-edit',
+            params: {songId: song.id}
+          })">
+          Edit this song
+        </v-btn>
+      </v-flex>
+      <v-flex xs6>
+      <img :src="song.albumImageUrl" class="album-image">
+      <br>
+      {{song.album}}
+      </v-flex>
     </v-layout>
 </panel>
 </template>
@@ -22,6 +30,11 @@ export default {
   props: [
     'song'
   ],
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
+  },
   components: {
     Panel
   }
