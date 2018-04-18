@@ -6,27 +6,24 @@
       <!-- 将song Object传到子组件 -->
       <song-metadata :song="song"></song-metadata>
     </v-flex>
+    <!-- youtube部件 -->
     <v-flex xs6 class="ml-2">
       <you-tube :youtubeId="song.youtubeId"></you-tube>
     </v-flex>
   </v-layout>
-  <!-- 歌词歌谱页 -->
-  <!-- <v-layout>
-    <v-flex xs6>
-      <panel title="Youtube Video">
-      </panel>
+  <v-layout>
+    <v-flex xs6></v-flex>
+    <!-- 歌词歌谱页 -->
+    <v-flex xs6 class="ml-2 mt-2">
+      <lyrics :lyrics="song.lyrics"></lyrics>
     </v-flex>
-    <v-flex xs6 class="ml-2">
-      <panel title="Lyrics">
-        <textarea readonly class="lyrics" v-model="song.lyrics"></textarea>
-      </panel>
-    </v-flex>
-  </v-layout> -->
+  </v-layout>
 </div>
 </template>
 
 <script>
 import SongMetadata from './SongMetadata'
+import Lyrics from './Lyrics'
 import YouTube from './YouTube'
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
@@ -47,27 +44,11 @@ export default {
   components: {
     Panel,
     SongMetadata,
-    YouTube
+    YouTube,
+    Lyrics
   }
 }
 </script>
 
 <style scoped>
-textarea{
-  width: 100%;
-  font-family: monospace;
-  border: none;
-  height: 600px;
-  border-style: none;
-  border-color: transparent;
-  overflow: auto;
-  padding: 40px;
-}
-@font-face {
-font-family: Sazanami;
-src: url(../../../static/fonts/sazanami-gothic.ttf);
-}
-textarea.lyrics{
-  font-family: Sazanami;
-}
 </style>

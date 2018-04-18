@@ -1,5 +1,6 @@
 <template>
     <panel title="Youtube Video">
+        <!-- 直接给属性赋值 -->
         <youtube class="ma-2"
             :video-id="youtubeId"
             :player-width="600"
