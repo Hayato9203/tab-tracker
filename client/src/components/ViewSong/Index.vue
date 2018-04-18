@@ -3,27 +3,17 @@
   <!-- 歌曲信息页 -->
   <v-layout>
     <v-flex xs6>
-      <panel title="Song Metadata">
-        <v-layout class="song">
-          <v-flex xs6>
-            <div class="song-title">{{song.title}}</div>
-            <div class="song-artist">{{song.artist}}</div>
-            <div class="song-genre">{{song.genre}}</div>
-          </v-flex>
-          <v-flex xs6>
-            <img :src="song.albumImageUrl" class="album-image">
-            <br>
-            {{song.album}}
-          </v-flex>
-        </v-layout>
-      </panel>
+      <!-- 将song Object传到子组件 -->
+      <song-metadata :song="song"></song-metadata>
+    </v-flex>
+    <v-flex xs6>
+
     </v-flex>
   </v-layout>
   <!-- 歌词歌谱页 -->
-  <v-layout>
+  <!-- <v-layout>
     <v-flex xs6>
-      <panel title="Song Metadata">
-        <!-- youtube embeded -->
+      <panel title="Youtube Video">
       </panel>
     </v-flex>
     <v-flex xs6 class="ml-2">
@@ -31,11 +21,12 @@
         <textarea readonly class="lyrics" v-model="song.lyrics"></textarea>
       </panel>
     </v-flex>
-  </v-layout>
+  </v-layout> -->
 </div>
 </template>
 
 <script>
+import SongMetadata from './SongMetadata'
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 
@@ -53,30 +44,13 @@ export default {
     console.log(this.song)
   },
   components: {
-    Panel
+    Panel,
+    SongMetadata
   }
 }
 </script>
 
 <style scoped>
-.song{
-  padding: 20px;
-  height: 330px;
-  overflow: hidden;
-}
-.song-title{
-  font-size: 30px;
-}
-.song-artist{
-  font-size: 24px;
-}
-.song-genre{
-  font-size: 18px;
-}
-.album-image{
-  width: 70%;
-  margin: 0 auto;
-}
 textarea{
   width: 100%;
   font-family: monospace;
@@ -89,7 +63,7 @@ textarea{
 }
 @font-face {
 font-family: Sazanami;
-src: url(../../static/fonts/sazanami-gothic.ttf);
+src: url(../../../static/fonts/sazanami-gothic.ttf);
 }
 textarea.lyrics{
   font-family: Sazanami;
