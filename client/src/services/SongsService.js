@@ -9,5 +9,9 @@ export default {
   },
   show (songId) {
     return Api().get(`songs/${songId}`)
+  },
+  // update歌曲信息
+  put (song) {
+    return Api().put(`songs/${song.id}`, song)
   }
 }
