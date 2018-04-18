@@ -6,8 +6,8 @@
       <!-- 将song Object传到子组件 -->
       <song-metadata :song="song"></song-metadata>
     </v-flex>
-    <v-flex xs6>
-
+    <v-flex xs6 class="ml-2">
+      <you-tube :youtubeId="song.youtubeId"></you-tube>
     </v-flex>
   </v-layout>
   <!-- 歌词歌谱页 -->
@@ -27,6 +27,7 @@
 
 <script>
 import SongMetadata from './SongMetadata'
+import YouTube from './YouTube'
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 
@@ -45,7 +46,8 @@ export default {
   },
   components: {
     Panel,
-    SongMetadata
+    SongMetadata,
+    YouTube
   }
 }
 </script>
