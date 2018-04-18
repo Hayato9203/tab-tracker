@@ -31,14 +31,14 @@
                     <v-text-field label="Tab" multi-line v-model="song.tab" required :rules="[required]"></v-text-field>
                 </v-card>
                 <v-card class="pl-4 pr-4 pt-3 pb-3">
-                    <v-text-field label="Lyrics" multi-line v-model="song.lyrics" required :rules="[required]"></v-text-field>
+                    <v-text-field label="Lyrics" class="lyrics" multi-line v-model="song.lyrics" required :rules="[required]"></v-text-field>
                 </v-card>
             </panel>
         </v-card>
         <v-alert outline color="error" v-if="error" icon="warning" :value="true">
             {{error}}
         </v-alert>
-        <v-btn dark class="cyan" @click="create">Create the Song</v-btn>
+        <v-btn dark class="cyan" @click="save">Save the Song</v-btn>
     </v-flex>
 </v-layout>
 </template>
@@ -67,7 +67,7 @@ export default {
     Panel
   },
   methods: {
-    async create () {
+    async save () {
       this.error = null
       const areAllFieldsFilledIn = Object
         .keys(this.song)
@@ -76,15 +76,28 @@ export default {
         this.error = `Please fill in all the required fields.`
         return
       }
-      // call API
+      const songId = this.$store.state.route.params.songId
       try {
-        await SongsService.post(this.song)
+        await SongsService.put(this.song)
         this.$router.push({
-          name: 'songs'
+          name: 'songs',
+          params: {
+            songId: songId
+          }
         })
       } catch (err) {
         console.log(err)
       }
+    }
+  },
+  //   mounted比methods早执行
+  async mounted () {
+    try {
+      // edit前将歌曲所有的信息自动填入相应的field中
+      const songId = this.$store.state.route.params.songId
+      this.song = (await SongsService.show(songId)).data
+    } catch (err) {
+      console.log(err)
     }
   }
 }
@@ -93,5 +106,12 @@ export default {
 <style scoped>
 .danger-alert{
     color: red;
+}
+@font-face {
+font-family: Sazanami;
+src: url(../../static/fonts/sazanami-gothic.ttf);
+}
+textarea.lyrics{
+  font-family: Sazanami;
 }
 </style>

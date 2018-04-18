@@ -42,7 +42,7 @@ export default {
     const songId = this.$store.state.route.params.songId
     // console.log(songId)
     this.song = (await SongsService.show(songId)).data
-    console.log(this.song)
+    // console.log(this.song)
   },
   components: {
     Panel,
