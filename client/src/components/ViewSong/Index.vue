@@ -12,7 +12,9 @@
     </v-flex>
   </v-layout>
   <v-layout>
-    <v-flex xs6></v-flex>
+    <v-flex xs6 mt-2>
+      <tab :tab="song.tab"></tab>
+    </v-flex>
     <!-- 歌词歌谱页 -->
     <v-flex xs6 class="ml-2 mt-2">
       <lyrics :lyrics="song.lyrics"></lyrics>
@@ -24,6 +26,7 @@
 <script>
 import SongMetadata from './SongMetadata'
 import Lyrics from './Lyrics'
+import Tab from './Tab'
 import YouTube from './YouTube'
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
@@ -45,7 +48,8 @@ export default {
     Panel,
     SongMetadata,
     YouTube,
-    Lyrics
+    Lyrics,
+    Tab
   }
 }
 </script>
