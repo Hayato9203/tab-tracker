@@ -2,7 +2,7 @@
   <v-layout row wrap>
     <v-flex xs6 offset-xs3>
         <songs-search-panel></songs-search-panel>
-        <songs-panel></songs-panel>
+        <songs-panel class="mt-2"></songs-panel>
     </v-flex>
   </v-layout>
 </template>
