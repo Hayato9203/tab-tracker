@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   data () {
     return {
@@ -16,7 +17,7 @@ export default {
   //   watch可以实时监视form的value
   //  这里是实时生成一个url:route+query模式的songs?search=value,同时地址栏生成url链接
   watch: {
-    search (value) {
+    search: _.debounce(async function (value) {
       const route = {
         name: 'songs'
       }
@@ -28,7 +29,7 @@ export default {
       //   同时地址栏生成url链接http://localhost:8080/#/songs?search=うたかた花火
       this.$router.push(route)
     //   console.log(value)
-    },
+    }, 700),
     // 从url的search值绑定到下面对应的form的value中
     '$route.query.search': {
       immediate: true,
