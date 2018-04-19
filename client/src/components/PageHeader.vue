@@ -1,9 +1,9 @@
 <template>
     <v-toolbar fixed class="teal accent-2" dark>
         <v-toolbar-title class="mr-4">
-            <span class="home" @click="navigateTo({name: 'root'})">
+            <router-link class="home" tag="span" :to="{name: 'root'}">
                 TabTracker
-            </span>
+            </router-link>
         </v-toolbar-title>
 
         <!-- TODO: Implement Me -->
@@ -14,14 +14,14 @@
         </v-toolbar-items> -->
 
         <v-toolbar-items>
-            <v-btn flat dark @click="navigateTo({name: 'songs'})">
+            <v-btn flat dark :to="{name: 'songs'}">
                 Browse
             </v-btn>
         </v-toolbar-items>
 
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <v-btn v-if="!$store.state.isUserLoggedIn" flat dark @click="navigateTo({name: 'register'})">
+            <v-btn v-if="!$store.state.isUserLoggedIn" flat dark :to="{name: 'register'}">
                 Sign Up
             </v-btn>
         </v-toolbar-items>
@@ -41,9 +41,6 @@
 <script>
 export default {
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    },
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)

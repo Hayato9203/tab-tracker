@@ -14,10 +14,10 @@
         <!-- 定义v-on:click中带有参数的route -->
         <v-btn
             dark class="cyan"
-            @click="navigateTo({
-            name: 'song',
-            params: {songId: song.id}
-            })">
+            :to="{
+              name: 'song',
+              params: {songId: song.id}
+            }">
             View this song
         </v-btn>
         </v-flex>
@@ -49,11 +49,6 @@ export default {
       async handler (value) {
         this.songs = (await SongsService.index(value)).data
       }
-    }
-  },
-  methods: {
-    navigateTo (route) {
-      this.$router.push(route)
     }
   }
 }
