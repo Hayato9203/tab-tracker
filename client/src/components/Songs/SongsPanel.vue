@@ -38,9 +38,18 @@ export default {
       songs: null
     }
   },
-  async mounted () {
-    // 从后台取得所有歌曲
-    this.songs = (await SongsService.index()).data
+  // 不需要mounted了,因为watch会做同样的事(筛选)
+  // async mounted () {
+  //   // 从后台取得所有歌曲
+  //   this.songs = (await SongsService.index()).data
+  // },
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
   },
   methods: {
     navigateTo (route) {
