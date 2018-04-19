@@ -8,7 +8,8 @@
             <form name="tab-tracker-form" autocomplete="off">
               <v-text-field label="Email" v-model="email"></v-text-field>
               <br />
-              <v-text-field label="Password" autocomplete="new-password" v-model="password"></v-text-field>
+              <v-text-field hint="At least 8 characters" label="Password" autocomplete="new-password" v-model="password" min="8"
+              counter></v-text-field>
             </form>
             <br />
             <v-alert outline color="error" v-if="error" icon="warning" :value="true">
@@ -42,6 +43,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }

@@ -41,6 +41,9 @@ export default {
         // 调用store的setToken方法,将返回的jwt的token保存到store中
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }

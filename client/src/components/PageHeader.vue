@@ -1,7 +1,7 @@
 <template>
     <v-toolbar fixed class="teal accent-2" dark>
         <v-toolbar-title class="mr-4">
-            <router-link class="home" tag="span" :to="{name: 'root'}">
+            <router-link class="home" tag="span" :to="{name: 'songs'}">
                 TabTracker
             </router-link>
         </v-toolbar-title>
@@ -46,7 +46,7 @@ export default {
       this.$store.dispatch('setUser', null)
       // TODOS: rediectly to the home page
       this.$router.push({
-        name: 'root'
+        name: 'songs'
       })
     }
   }
