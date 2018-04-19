@@ -28,6 +28,13 @@ export default {
       //   同时地址栏生成url链接http://localhost:8080/#/songs?search=うたかた花火
       this.$router.push(route)
     //   console.log(value)
+    },
+    // 从url的search值绑定到下面对应的form的value中
+    '$route.query.search': {
+      immediate: true,
+      handler (value) {
+        this.search = value
+      }
     }
   }
 }
