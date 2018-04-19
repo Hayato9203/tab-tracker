@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 
 export default {
@@ -47,9 +46,6 @@ export default {
     navigateTo (route) {
       this.$router.push(route)
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>
