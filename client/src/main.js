@@ -14,7 +14,7 @@ Vue.config.productionTip = false
 Vue.use(Vuetify)
 Vue.use(VueYouTubeEmbed)
 sync(store, router)
-Vue.components('panel', Panel)
+Vue.component('panel', Panel)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

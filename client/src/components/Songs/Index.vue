@@ -1,8 +1,8 @@
 <template>
   <v-layout row wrap>
     <v-flex xs6 offset-xs3>
-        <songs-panel></songs-panel>
         <songs-search-panel></songs-search-panel>
+        <songs-panel></songs-panel>
     </v-flex>
   </v-layout>
 </template>
