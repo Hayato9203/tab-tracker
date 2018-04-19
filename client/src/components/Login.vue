@@ -8,7 +8,9 @@
             <br />
             <v-text-field label="Password" type="password" v-model="password"></v-text-field>
             <br />
-            <div class="error" v-html="error"></div>
+            <v-alert outline color="error" v-if="error" icon="warning" :value="true">
+              {{error}}
+            </v-alert>
             <br>
             <v-btn dark class="cyan" @click="login">Login</v-btn>
           </v-card>

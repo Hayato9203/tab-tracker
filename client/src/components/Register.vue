@@ -11,7 +11,9 @@
               <v-text-field label="Password" autocomplete="new-password" v-model="password"></v-text-field>
             </form>
             <br />
-            <div class="error" v-html="error"></div>
+            <v-alert outline color="error" v-if="error" icon="warning" :value="true">
+              {{error}}
+            </v-alert>
             <br>
             <v-btn dark class="cyan" @click="register">Register</v-btn>
           </v-card>
@@ -49,7 +51,4 @@ export default {
 </script>
 
 <style scoped>
-.error {
-  color: red;
-}
 </style>

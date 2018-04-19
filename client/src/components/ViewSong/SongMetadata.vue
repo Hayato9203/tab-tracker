@@ -7,7 +7,7 @@
         <div class="song-genre">{{song.genre}}</div>
         <v-btn
           dark class="cyan"
-          :to="{
+          v-bind:to="{
             name: 'song-edit',
             params: {songId: song.id}
           }">
