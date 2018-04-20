@@ -37,6 +37,8 @@
 
 <script>
 import {mapState} from 'vuex'
+import BookmarksService from '@/services/BookmarksService'
+
 export default {
   props: [
     'song'
@@ -46,6 +48,13 @@ export default {
     ...mapState([
       'isUserLoggedIn'
     ])
+  },
+  async mounted () {
+    const bookmark = (await BookmarksService.index({
+      songId: 1,
+      userId: 1
+    })).data
+    console.log('bookmarks', bookmark)
   },
   methods: {
     bookmark () {
