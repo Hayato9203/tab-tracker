@@ -17,14 +17,14 @@
         <v-btn
           v-if="isUserLoggedIn && !isBookmarked"
           dark class="cyan"
-          @click="bookmark">
+          @click="unbookmark">
           Bookmark
         </v-btn>
         <!-- 如果以bookmark则显示unbookmark按钮 -->
         <v-btn
           v-if="isUserLoggedIn && isBookmarked"
           dark class="cyan"
-          @click="unbookmark">
+          @click="bookmark">
           Unbookmark
         </v-btn>
       </v-flex>
@@ -58,8 +58,8 @@ export default {
   },
   async mounted () {
     const bookmark = (await BookmarksService.index({
-      songId: 1,
-      userId: 1
+      songId: this.song.id,
+      userId: this.$store.state.user.id
     })).data
     // 这个歌曲是否被该用户bookmark了
     this.isBookmarked = !!bookmark
