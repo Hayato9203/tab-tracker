@@ -17,14 +17,14 @@
         <v-btn
           v-if="isUserLoggedIn && !isBookmarked"
           dark class="cyan"
-          @click="unbookmark">
+          @click="bookmark">
           Bookmark
         </v-btn>
         <!-- 如果以bookmark则显示unbookmark按钮 -->
         <v-btn
           v-if="isUserLoggedIn && isBookmarked"
           dark class="cyan"
-          @click="bookmark">
+          @click="unbookmark">
           Unbookmark
         </v-btn>
       </v-flex>
@@ -86,10 +86,8 @@ export default {
     },
     async unbookmark () {
       try {
-        await BookmarksService.delete({
-          songId: this.song.id,
-          userId: this.$store.state.user.id
-        })
+        await BookmarksService.delete(this.bookmark.id)
+        this.bookmark = null
       } catch (err) {
         console.log(err)
       }
