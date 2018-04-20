@@ -56,18 +56,19 @@ export default {
       'isUserLoggedIn'
     ])
   },
-  async mounted () {
-    // 如果用户已登录就不需要mounted的方法了
-    if (!this.isUserLoggedIn) {
-      return
-    }
-    try {
-      this.bookmark = (await BookmarksService.index({
-        songId: this.song.id,
-        userId: this.$store.state.user.id
-      })).data
-    } catch (err) {
-      console.log(err)
+  watch: {
+    async song () {
+      if (!this.isUserLoggedIn) {
+        return
+      }
+      try {
+        this.bookmark = (await BookmarksService.index({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   methods: {

@@ -28,6 +28,8 @@ vuex-persistedstate - 刷新页面时，Vuex.Store定义的所有状态(登录)�
 	User.findOne()返回一个instances,不能使用user.json()，先使用打印user,查看对象,然后取user.dataValues解决问题
 	
 	BookmarksController.js: BookmarksService中传来一个body含params的Object{songId:xx,userId:xx},通过打印查看得出正确的Bookmark.create(req.body)逻辑
+
+	SongMetadata.vue中mounted的return会导致bug,刷新页面后不会从后台获取静态的bookmark,解决方法是改用watch song方法
 `
 */
 
