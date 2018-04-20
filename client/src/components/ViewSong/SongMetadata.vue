@@ -13,14 +13,16 @@
           }">
           Edit this song
         </v-btn>
+        <!-- 如果已登录，而且该项目没有被bookmark则显示bookmark功能按钮 -->
         <v-btn
-          v-if="isUserLoggedIn"
+          v-if="isUserLoggedIn && !isBookmarked"
           dark class="cyan"
           @click="bookmark">
           Bookmark
         </v-btn>
+        <!-- 如果以bookmark则显示unbookmark按钮 -->
         <v-btn
-          v-if="isUserLoggedIn"
+          v-if="isUserLoggedIn && isBookmarked"
           dark class="cyan"
           @click="unbookmark">
           Unbookmark
@@ -43,6 +45,11 @@ export default {
   props: [
     'song'
   ],
+  data () {
+    return {
+      isBookmarked: false
+    }
+  },
   // mapState接管$store.state.isUserLoggedIn,接管store文件中的state属性
   computed: {
     ...mapState([
@@ -54,7 +61,9 @@ export default {
       songId: 1,
       userId: 1
     })).data
-    console.log('bookmarks', bookmark)
+    // 这个歌曲是否被该用户bookmark了
+    this.isBookmarked = !!bookmark
+    console.log('bookmarks', this.isBookmarked)
   },
   methods: {
     bookmark () {
