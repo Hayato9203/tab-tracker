@@ -26,6 +26,8 @@ vuex-persistedstate - 刷新页面时，Vuex.Store定义的所有状态(登录)�
 	  4.hooks，查找文档，查看解释，查看github issue，去掉beforeSave或者<beforeUpdate，beforeCreate>解决问题,或者后者两个功能相加等于前者,前后公用会冲突
 	  
 	User.findOne()返回一个instances,不能使用user.json()，先使用打印user,查看对象,然后取user.dataValues解决问题
+	
+	BookmarksController.js: BookmarksService中传来一个body含params的Object{songId:xx,userId:xx},通过打印查看得出正确的Bookmark.create(req.body)逻辑
 `
 */
 

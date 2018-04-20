@@ -19,9 +19,24 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const bookmark = req.body
-      await Bookmark.create(bookmark)
-      res.send(bookmark)
+      // 创建bookmark前判断数据库中是否已存在
+      const {userId, songId} = req.body.params
+      const bookmark = await Bookmark.findOne({
+        where: {
+          SongId: songId,
+          UserId: userId
+        }
+      })
+      // console.log(`userId`, userId, songId, req.body.params)
+      // 如果存在，则返回400
+      if (bookmark) {
+        return res.status(400).send({
+          error: `you already have this set as a bookmark`
+        })
+      }
+
+      const newBookmark = await Bookmark.create(req.body)
+      res.send(newBookmark)
     } catch (err) {
       res.status(500).send({
         error: `An error has occured trying to create the bookmark`
@@ -43,3 +58,5 @@ module.exports = {
     }
   }
 }
+
+/* 遇到的问题， BookmarksService中传来一个body含params的Object{songId:,userId:},通过打印查看得出正确的Bookmark.create(req.body)逻辑 */

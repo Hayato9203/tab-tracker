@@ -76,6 +76,8 @@ export default {
   methods: {
     async bookmark () {
       try {
+        // console.log(`this.song.id`, this.song.id)
+        // console.log(`this.$store.state.user.id`, this.$store.state.user.id)
         await BookmarksService.post({
           songId: this.song.id,
           userId: this.$store.state.user.id
