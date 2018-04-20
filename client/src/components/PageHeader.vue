@@ -26,7 +26,7 @@
             </v-btn>
         </v-toolbar-items>
         <v-toolbar-items>
-            <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router to="login">
+            <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router :to="{name: 'login'}">
                 Log In
             </v-btn>
         </v-toolbar-items>
