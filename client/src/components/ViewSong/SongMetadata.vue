@@ -15,16 +15,16 @@
         </v-btn>
         <!-- 如果已登录，而且该项目没有被bookmark则显示bookmark功能按钮 -->
         <v-btn
-          v-if="isUserLoggedIn && !isBookmarked"
+          v-if="isUserLoggedIn && !bookmark"
           dark class="cyan"
-          @click="bookmark">
+          @click="setAsBookmark">
           Bookmark
         </v-btn>
         <!-- 如果以bookmark则显示unbookmark按钮 -->
         <v-btn
-          v-if="isUserLoggedIn && isBookmarked"
+          v-if="isUserLoggedIn && bookmark"
           dark class="cyan"
-          @click="unbookmark">
+          @click="unsetAsBookmark">
           Unbookmark
         </v-btn>
       </v-flex>
@@ -47,7 +47,7 @@ export default {
   ],
   data () {
     return {
-      isBookmarked: false
+      bookmark: null
     }
   },
   // mapState接管$store.state.isUserLoggedIn,接管store文件中的state属性
@@ -62,31 +62,26 @@ export default {
       return
     }
     try {
-      const bookmark = (await BookmarksService.index({
+      this.bookmark = (await BookmarksService.index({
         songId: this.song.id,
         userId: this.$store.state.user.id
       })).data
-      // 这个歌曲是否被该用户bookmark了
-      this.isBookmarked = !!bookmark
-      // console.log('bookmarks', this.isBookmarked)
     } catch (err) {
       console.log(err)
     }
   },
   methods: {
-    async bookmark () {
+    async setAsBookmark () {
       try {
-        // console.log(`this.song.id`, this.song.id)
-        // console.log(`this.$store.state.user.id`, this.$store.state.user.id)
-        await BookmarksService.post({
+        this.bookmark = (await BookmarksService.post({
           songId: this.song.id,
           userId: this.$store.state.user.id
-        })
+        })).data
       } catch (err) {
         console.log(err)
       }
     },
-    async unbookmark () {
+    async unsetAsBookmark () {
       try {
         await BookmarksService.delete(this.bookmark.id)
         this.bookmark = null
