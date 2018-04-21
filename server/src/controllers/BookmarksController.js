@@ -1,15 +1,26 @@
-const { Bookmark } = require('../models')
+const { Bookmark, Song } = require('../models')
+const _ = require('lodash')
 
 module.exports = {
   async index (req, res) {
     try {
       const {songId, userId} = req.query
+      // const where = songId ? {UserId: userId} : {UserId: userId, SongId: songId}
+      const where = {
+        UserId: userId
+      }
+      if (songId) {
+        where.SongId = songId
+      }
+      // Song的信息将会内嵌于返回的bookmark中
       const bookmarks = await Bookmark.findAll({
-        where: {
-          SongId: songId,
-          UserId: userId
-        }
+        where: where,
+        include: [{model: Song}]
       })
+        .map(bookmark => bookmark.toJSON())
+        .map(bookmark => _.extend({
+          bookmarkId: bookmark.id
+        }, bookmark.Song))
       res.send(bookmarks)
     } catch (err) {
       res.status(500).send({
@@ -49,11 +60,11 @@ module.exports = {
   async delete (req, res) {
     try {
       const {bookmarkId} = req.params
-      await Bookmark.findById(bookmarkId)
-        .then(async (bookmark) => {
-          await bookmark.destroy()
-          res.send(bookmark)
-        })
+      const bookmark = await Bookmark.findById(bookmarkId)
+      // .then(async (bookmark) => {
+      await bookmark.destroy()
+      res.send(bookmark)
+      // })
     } catch (err) {
       res.status(500).send({
         error: `An error has occured trying to delete the bookmark`
