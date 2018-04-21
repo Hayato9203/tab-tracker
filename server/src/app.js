@@ -17,6 +17,8 @@ app.get('/status', (req, res) => {
   })
 })
 
+require('./passport')
+
 require('./routes')(app)
 
 // force: true服务重启,数据库将被覆盖

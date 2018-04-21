@@ -17,6 +17,8 @@ vue-youtube-embed - youtube播放部件
 lodash - vue-model实时延迟
 mapState - vuex中接管store.state的属性
 vuex-persistedstate - 刷新页面时，Vuex.Store定义的所有状态(登录)都会被本地保存而不会重新载入
+passport - 登录验证
+passport-jwt
 
 
 
