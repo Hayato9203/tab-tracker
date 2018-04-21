@@ -4,13 +4,13 @@ module.exports = {
   async index (req, res) {
     try {
       const {songId, userId} = req.query
-      const bookmark = await Bookmark.findOne({
+      const bookmarks = await Bookmark.findAll({
         where: {
           SongId: songId,
           UserId: userId
         }
       })
-      res.send(bookmark)
+      res.send(bookmarks)
     } catch (err) {
       res.status(500).send({
         error: `An error has occured trying to fetch the bookmark`
