@@ -29,6 +29,8 @@ import Lyrics from './Lyrics'
 import Tab from './Tab'
 import YouTube from './YouTube'
 import SongsService from '@/services/SongsService'
+import SongHistoryService from '@/services/SongHistoryService'
+import {mapState} from 'vuex'
 
 export default {
   data () {
@@ -36,12 +38,24 @@ export default {
       song: {}
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user',
+      'route'
+    ])
+  },
   async mounted () {
     // 从vuex中获取songId
-    const songId = this.$store.state.route.params.songId
-    // console.log(songId)
+    const songId = this.route.params.songId
     this.song = (await SongsService.show(songId)).data
-    // console.log(this.song)
+    // 查看歌曲的时候，顺便记录查看历史
+    if (this.isUserLoggedIn) {
+      SongHistoryService.post({
+        songId: songId,
+        userId: this.user.id
+      })
+    }
   },
   components: {
     SongMetadata,
