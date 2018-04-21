@@ -85,6 +85,10 @@ export default {
           userId: this.user.id
         })).data
       }, 1000)
+    } else {
+      setTimeout(async () => {
+        this.loading = false
+      }, 1000)
     }
   },
   methods: {}
