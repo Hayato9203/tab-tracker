@@ -4,7 +4,7 @@
       :headers="headers"
       :pagination.sync="pagination"
       :loading="loading"
-      :items="songs"
+      :items="histories"
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
@@ -25,10 +25,10 @@ export default {
     return {
       //   加载栏
       loading: true,
-      songs: [],
+      histories: [],
       // 分页
       pagination: {
-        sortBy: 'date',
+        sortBy: 'createAt',
         descending: true
       },
       //   表头
@@ -62,13 +62,12 @@ export default {
     if (this.isUserLoggedIn) {
       setTimeout(async () => {
         this.loading = false
-        this.bookmarks = (await SongHistoryService.index({
+        this.histories = (await SongHistoryService.index({
           userId: this.user.id
         })).data
       }, 1000)
     }
-  },
-  methods: {}
+  }
 }
 </script>
 

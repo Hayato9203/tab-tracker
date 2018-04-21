@@ -29,7 +29,7 @@ export default {
       bookmarks: [],
       // 分页
       pagination: {
-        sortBy: 'date',
+        sortBy: 'createAt',
         descending: true
       },
       //   表头

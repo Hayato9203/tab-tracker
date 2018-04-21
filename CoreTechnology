@@ -1,5 +1,8 @@
 Vue2
 Express
+cors - (跨域资源共享)解决客户端client和服务端server跨域问题,详细MDN文档:https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS，网友整理文档
+:https://www.cnblogs.com/roam/p/7520433.html,https://www.cnblogs.com/2050/p/3191744.html
+morgan - Express默认的日志中间件,网友整理:https://www.cnblogs.com/chyingp/p/node-learning-guide-express-morgan.html
 jwt - client和server间传递client认证的信息http://t.cn/RmOXvL7
 bcrypt-nodejs - 加密
 sequelize - (ORM)虚拟对象数据库(支持多种数据库)
@@ -30,6 +33,12 @@ vuex-persistedstate - 刷新页面时，Vuex.Store定义的所有状态(登录)�
 	BookmarksController.js: BookmarksService中传来一个body含params的Object{songId:xx,userId:xx},通过打印查看得出正确的Bookmark.create(req.body)逻辑
 
 	SongMetadata.vue中mounted的return会导致bug,刷新页面后不会从后台获取静态的bookmark,解决方法是改用watch song方法
+
+	RecentlyViewedSongs.vue查看历史记录时不显示，也不报错
+		分析：数据库有记录，post是ok的，index不生效
+		1.userId是undefined，已排除
+		2.map无结果，有返回结果，已排除
+		3.vue模板, 从后台获取数据时this.hitories命名错误少个s
 `
 */
 
