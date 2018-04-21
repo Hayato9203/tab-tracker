@@ -1,12 +1,11 @@
 <template>
     <panel title="Bookmarks">
+        <!-- 将bookmarks赋予items供给table遍历 -->
     <v-data-table
       :headers="headers"
-      :items="items"
-      :search="search"
       :pagination.sync="pagination"
-      :total-items="totalItems"
       :loading="loading"
+      :items="bookmarks"
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
@@ -25,11 +24,6 @@ import BookmarksService from '@/services/BookmarksService'
 export default {
   data () {
     return {
-      search: '',
-      //   数目
-      totalItems: 0,
-      //   获得的数据
-      items: [],
       //   加载栏
       loading: true,
       bookmarks: [],
@@ -58,20 +52,6 @@ export default {
       ]
     }
   },
-  watch: {
-    pagination: {
-      async handler () {
-        await BookmarksService.index({
-          userId: this.user.id
-        })
-          .then(data => {
-            this.items = data.items
-            this.totalItems = data.total
-          })
-      },
-      deep: true
-    }
-  },
   computed: {
     ...mapState([
       'isUserLoggedIn',
@@ -81,13 +61,10 @@ export default {
   //   如果用户已登录，则后台加载该用户的bookmarks数据
   async mounted () {
     if (this.isUserLoggedIn) {
-      this.bookmarks = await BookmarksService.index({
+      this.bookmarks = (await BookmarksService.index({
         userId: this.user.id
-      })
-        .then(data => {
-          this.items = data.items
-          this.totalItems = data.total
-        })
+      })).data
+      this.loading = false
     }
   },
   methods: {}

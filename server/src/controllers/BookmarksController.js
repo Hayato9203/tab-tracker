@@ -5,7 +5,6 @@ module.exports = {
   async index (req, res) {
     try {
       const {songId, userId} = req.query
-      // const where = songId ? {UserId: userId} : {UserId: userId, SongId: songId}
       const where = {
         UserId: userId
       }
@@ -18,9 +17,10 @@ module.exports = {
         include: [{model: Song}]
       })
         .map(bookmark => bookmark.toJSON())
-        .map(bookmark => _.extend({
-          bookmarkId: bookmark.id
-        }, bookmark.Song))
+        .map(bookmark => _.extend(
+          {},
+          bookmark.Song,
+          bookmark))
       res.send(bookmarks)
     } catch (err) {
       res.status(500).send({
