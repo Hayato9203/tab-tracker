@@ -1,5 +1,5 @@
 <template>
-    <panel title="Recently Viewed Songs">
+  <panel title="Recently Viewed Songs">
     <v-data-table
       :headers="headers"
       :pagination.sync="pagination"
@@ -14,7 +14,7 @@
         <td class="text-xs-right">{{ props.item.genre }}</td>
       </template>
     </v-data-table>
-    </panel>
+  </panel>
 </template>
 
 <script>
@@ -26,6 +26,7 @@ export default {
       //   加载栏
       loading: true,
       histories: [],
+      search: '',
       // 分页
       pagination: {
         sortBy: 'createAt',

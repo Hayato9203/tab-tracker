@@ -1,20 +1,34 @@
 <template>
     <panel title="Bookmarks">
-        <!-- 将bookmarks赋予items供给table遍历 -->
-    <v-data-table
-      :headers="headers"
-      :pagination.sync="pagination"
-      :loading="loading"
-      :items="bookmarks"
-      class="elevation-1"
-    >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.item.title }}</td>
-        <td class="text-xs-right">{{ props.item.artist }}</td>
-        <td class="text-xs-right">{{ props.item.album }}</td>
-        <td class="text-xs-right">{{ props.item.genre }}</td>
-      </template>
-    </v-data-table>
+      <v-card-title>
+        Filter
+        <v-spacer></v-spacer>
+        <v-text-field
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
+          v-model="search"
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        :headers="headers"
+        :pagination.sync="pagination"
+        :loading="loading"
+        :items="bookmarks"
+        :search="search"
+        class="elevation-1"
+      >
+        <template slot="items" slot-scope="props">
+          <td>{{ props.item.title }}</td>
+          <td class="text-xs-right">{{ props.item.artist }}</td>
+          <td class="text-xs-right">{{ props.item.album }}</td>
+          <td class="text-xs-right">{{ props.item.genre }}</td>
+        </template>
+        <v-alert slot="no-results" :value="true" color="error" icon="warning">
+          Your search for "{{search}}" found no results.
+        </v-alert>
+      </v-data-table>
     </panel>
 </template>
 
@@ -27,6 +41,7 @@ export default {
       //   加载栏
       loading: true,
       bookmarks: [],
+      search: '',
       // 分页
       pagination: {
         sortBy: 'createAt',
