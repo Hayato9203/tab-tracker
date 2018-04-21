@@ -52,8 +52,7 @@ export default {
     // 查看歌曲的时候，顺便记录查看历史
     if (this.isUserLoggedIn) {
       SongHistoryService.post({
-        songId: songId,
-        userId: this.user.id
+        songId: songId
       })
     }
   },

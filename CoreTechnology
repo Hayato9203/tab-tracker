@@ -30,7 +30,8 @@ passport-jwt
 	  3.sequelize.define, 排查schema,type?无果
 	  4.hooks，查找文档，查看解释，查看github issue，去掉beforeSave或者<beforeUpdate，beforeCreate>解决问题,或者后者两个功能相加等于前者,前后公用会冲突
 	  
-	User.findOne()返回一个instances,不能使用user.json()，先使用打印user,查看对象,然后取user.dataValues解决问题
+	AuthenticationController.js返回一个create, 要使用user.toJSON()解决问题
+	// 先使用打印user,查看对象,然后取user.dataValues解决问题
 	
 	BookmarksController.js: BookmarksService中传来一个body含params的Object{songId:xx,userId:xx},通过打印查看得出正确的Bookmark.create(req.body)逻辑
 
@@ -41,6 +42,10 @@ passport-jwt
 		1.userId是undefined，已排除
 		2.map无结果，有返回结果，已排除
 		3.vue模板, 从后台获取数据时this.hitories命名错误少个s
+
+	BookmarksController.js:使用jwt后，添加bookmark功能失效，数据库只保存了songId,无userId
+		1.并不能使用jwt获得的userId，验证可以获得
+		2.post方法不能获得userId,改正为jwt途径获得,修复问题
 `
 */
 

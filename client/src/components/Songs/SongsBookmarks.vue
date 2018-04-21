@@ -81,9 +81,8 @@ export default {
     //   })).data
       setTimeout(async () => {
         this.loading = false
-        this.bookmarks = (await BookmarksService.index({
-          userId: this.user.id
-        })).data
+        // 使用jwt后不需要this.$store.state.user.id了
+        this.bookmarks = (await BookmarksService.index()).data
       }, 1000)
     } else {
       setTimeout(async () => {

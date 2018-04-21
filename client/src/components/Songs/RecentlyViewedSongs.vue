@@ -63,9 +63,7 @@ export default {
     if (this.isUserLoggedIn) {
       setTimeout(async () => {
         this.loading = false
-        this.histories = (await SongHistoryService.index({
-          userId: this.user.id
-        })).data
+        this.histories = (await SongHistoryService.index()).data
       }, 1000)
     } else {
       setTimeout(async () => {

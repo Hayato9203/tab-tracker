@@ -4,7 +4,7 @@ const _ = require('lodash')
 module.exports = {
   async index (req, res) {
     try {
-      const {userId} = req.query
+      const userId = req.user.id
       const histories = await History.findAll({
         where: { UserId: userId },
         include: [{ model: Song }]
@@ -23,8 +23,8 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      // 创建bookmark前判断数据库中是否已存在
-      const {userId, songId} = req.body.params
+      const userId = req.user.id
+      const {songId} = req.body.params
       const history = await History.create({
         SongId: songId,
         UserId: userId

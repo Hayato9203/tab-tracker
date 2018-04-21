@@ -32,8 +32,9 @@ module.exports = {
   },
   async post (req, res) {
     try {
+      const userId = req.user.id
       // 创建bookmark前判断数据库中是否已存在
-      const {userId, songId} = req.body.params
+      const {songId} = req.body.params
       const bookmark = await Bookmark.findOne({
         where: {
           SongId: songId,
@@ -61,8 +62,20 @@ module.exports = {
   },
   async delete (req, res) {
     try {
+      // 只返回已经在jwt的用户的bookmarks
+      const userId = req.user.id
       const {bookmarkId} = req.params
-      const bookmark = await Bookmark.findById(bookmarkId)
+      const bookmark = await Bookmark.findOne({
+        where: {
+          id: bookmarkId,
+          UserId: userId
+        }
+      })
+      if (!bookmark) {
+        return res.status(403).send({
+          error: `you do not have access to this bookmark`
+        })
+      }
       // .then(async (bookmark) => {
       await bookmark.destroy()
       res.send(bookmark)
@@ -75,4 +88,8 @@ module.exports = {
   }
 }
 
-/* 遇到的问题， BookmarksService中传来一个body含params的Object{songId:,userId:},通过打印查看得出正确的Bookmark.create(req.body)逻辑 */
+/* 遇到的问题， BookmarksService中传来一个body含params的Object{songId:,userId:},通过打印查看得出正确的Bookmark.create(req.body)逻辑
+  使用jwt后，添加bookmark功能失效，数据库只保存了songId,无userId
+  1.并不能使用jwt获得的userId，验证可以获得
+  2.post方法不能获得userId,改正为jwt途径获得,修复问题
+*/
