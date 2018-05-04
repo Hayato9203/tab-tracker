@@ -20,6 +20,8 @@ vuex-persistedstate - 刷新页面时，Vuex.Store定义的所有状态(登录)�
 passport - 登录验证
 passport-jwt - jwt传送全局req.user等信息
 
+自定义字体
+
 
 
 /*
