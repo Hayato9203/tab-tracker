@@ -4,6 +4,7 @@ const Sequelize = require('sequelize')
 const config = require('../config/config')
 const db = {}
 
+// 注册sequelize默认行为
 const sequelize = new Sequelize(
   config.db.database,
   config.db.user,
@@ -19,12 +20,14 @@ fs.readdirSync(__dirname)
     db[model.name] = model
   })
 
+// 数据库关联
 Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
   }
 })
 
+// 将sequelize分别传给上面读取到的db里面sequelize的变量
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 

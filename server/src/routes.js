@@ -7,6 +7,8 @@ const BookmarksController = require('./controllers/BookmarksController')
 const HistoriesController = require('./controllers/HistoriesController')
 const isAuthenticated = require('./policies/isAuthenticated')
 
+// 集中处理从client端过来的请求
+// 将下面的server路由请求暴露一个名为app的模块
 module.exports = (app) => {
   app.post('/register',
     AuthenticationControllerPolicy.register,

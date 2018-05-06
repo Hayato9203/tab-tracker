@@ -9,6 +9,7 @@ import EditSong from '@/components/EditSong'
 
 Vue.use(VueRouter)
 
+// client端的路由
 export default new VueRouter({
   mode: 'history',
   routes: [

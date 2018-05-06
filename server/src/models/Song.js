@@ -1,3 +1,4 @@
+// 导出模块时暴露两个变量, 其中sequelize将由引入模块赋予
 module.exports = (sequelize, DataTypes) => {
   const Song = sequelize.define('Song', {
     title: DataTypes.STRING,

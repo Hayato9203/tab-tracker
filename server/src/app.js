@@ -18,7 +18,7 @@ app.get('/status', (req, res) => {
 })
 
 require('./passport')
-
+// 引入资源路由请求模块
 require('./routes')(app)
 
 // force: true服务重启,数据库将被覆盖

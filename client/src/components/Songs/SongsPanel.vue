@@ -38,7 +38,7 @@ export default {
       songs: null
     }
   },
-  // 不需要mounted了,因为watch会做同样的事(筛选)
+  // 不需要mounted,因为watch时会做取得歌曲的步骤(并有筛选功能)
   // async mounted () {
   //   // 从后台取得所有歌曲
   //   this.songs = (await SongsService.index()).data
