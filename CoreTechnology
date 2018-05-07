@@ -21,6 +21,7 @@ passport - 登录验证
 passport-jwt - jwt传送全局req.user等信息
 
 css添加自定义字体
+MySQL数据库关联
 动态路由/route/:id - 接收时使用$route.params.id
 编程是路由/route?id=123 - 使用$route.query.id
 

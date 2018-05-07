@@ -17,10 +17,12 @@ fs.readdirSync(__dirname)
   .filter(file => file !== 'index.js')
   .forEach(file => {
     const model = sequelize.import(path.join(__dirname, file))
+    // console.log(`model.name: ${model.name}`)
+    // 将db注册为Object{Song:'Song'}....., 如d['a']===d.a => true
     db[model.name] = model
   })
 
-// 数据库关联
+// 数据库关联,将关联数据库传到含associate的models中
 Object.keys(db).forEach(function (modelName) {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
