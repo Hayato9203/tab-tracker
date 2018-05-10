@@ -12,6 +12,18 @@ const users = require('./users.json')
 const bookmarks = require('./bookmarks.json')
 const histories = require('./histories.json')
 
+// 原理解释
+/* async function () {
+  // Promise.all([])
+  await Promise.all(
+    // 将songs的obj拆解成数组
+    songs.map(song => {
+      // 每次新建一条obj数据记录
+      Song.create(song)
+    })
+  )
+} */
+
 sequelize.sync({
   force: true
 }).then(async function () {
